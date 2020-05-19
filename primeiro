@@ -98,3 +98,38 @@ class Apple(pygame.sprite.Sprite):
             gvars.score+=1
         else:
             pygame.mouse.set_cursor(*pygame.cursors.arrow)
+
+
+def Sliced(self):
+        pygame.mixer.Sound.play(apple_sound)
+        applecut1=AppleCut1(self.rect.x,self.rect.y,self.const)
+        all_sprites.add(applecut1)
+        applecut2=AppleCut2(self.rect.x,self.rect.y,self.const)
+        all_sprites.add(applecut2)
+
+class AppleCut1 (pygame.sprite.Sprite):
+    def __init__(self,x,y,velocity):
+        pygame. sprite. Sprite. __init__(self)
+        self.image=pygame.image.load(os.path.join(fruit_folder,"greenapplecut1.png")).convert_alpha()
+        self.rect=self.image.get_rect ()
+        self.rect.x=x-80
+        self.rect.y=y
+        self.const=velocity
+    def update (self):
+        self.const+=0.4
+        self.rect.y+=int(2*self.const)
+        if self.rect.y>hight+200:
+            self.kill()
+class AppleCut2 (pygame.sprite.Sprite):
+    def __init__(self,x,y,velocity):
+        pygame.sprite.Sprite.__init__(self)
+        self.image=pygame.image.load(os.path.join(fruit_folder,"greenapplecut2.png")).convert_alpha()
+        self.rect=self.image.get_rect ()
+        self.rect.x=x+80
+        self.rect.y=y
+        self.const=velocity
+    def update(self):
+        self.const+=0.4
+        self.rect.y+=int(2*self.const)
+        if self.rect.y>hight+200:
+            self.kill()
