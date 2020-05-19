@@ -100,7 +100,7 @@ class Apple(pygame.sprite.Sprite):
             pygame.mouse.set_cursor(*pygame.cursors.arrow)
 
 
-def Sliced(self):
+    def Sliced(self):
         pygame.mixer.Sound.play(apple_sound)
         applecut1=AppleCut1(self.rect.x,self.rect.y,self.const)
         all_sprites.add(applecut1)
