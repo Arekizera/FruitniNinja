@@ -166,3 +166,11 @@ class Banna(pygame.sprite. Sprite):
         elif self.time+5<time and self.rect.y<hight:
             self.const+=0.4
             self.rect.y+=int(2*self.const)
+        if self.rect.y>hight+200:
+            gvars.fruit_count-=1
+            self.kill() 
+        if mouse[0]==1 and self.rect.collidepoint(pos[0],pos[1]):
+            gvars.score+=1
+            gvars.fruit_count-=1
+            self.kill()
+            self.Sliced()
