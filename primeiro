@@ -253,11 +253,11 @@ class Pineapple(pygame.sprite.Sprite):
             self.Sliced()
         
         def Sliced(self):
-        pygame.mixer.Sound.play(cut_sound)
-        pineapplecut1=PineappleCut1(self.rect.x,self.rect.y,self.const)
-        all_sprites.add(pineapplecut1)
-        pineapplecut2=PineappleCut2(self.rect.x,self.rect.y,self.const)
-        all_sprites.add(pineapplecut2)
+            pygame.mixer.Sound.play(cut_sound)
+            pineapplecut1=PineappleCut1(self.rect.x,self.rect.y,self.const)
+            all_sprites.add(pineapplecut1)
+            pineapplecut2=PineappleCut2(self.rect.x,self.rect.y,self.const)
+            all_sprites.add(pineapplecut2)
 
 class PineappleCut1(pygame.sprite.Sprite):
     def __init__(self,x,y,velocity):
