@@ -325,6 +325,60 @@ class Radish(pygame.sprite.Sprite):
             gvars.fruit_count-=1
             self.kill()
             self. Sliced()
+            
+        def Sliced(self):
+        pygame.mixer.Sound.play(cut_sound)
+        radishcut1=RadishCut1(self.rect.x,self.rect.y,self.const)
+        all_sprites.add(radishcut1)
+        radishcut2=RadishCut2(self.rect.x,self.rect.y,self.const)
+        all_sprites.add(radishcut2)
+
+class RadishCut1(pygame.sprite.Sprite):
+    def __init__(self,x,y,velocity):
+        
+        pygame.sprite.Sprite.__init__(self)
+        self.image=pygame.image.load(os.path.join(fruit_folder,"radishcut1.png")).convert_alpha()
+        self.rect=self.image.get_rect()
+        self.rect.x=x-150
+        self.rect.y=y
+        self.const=velocity
+    def update(self):
+        self.const+=0.4
+        self.rect.y+=int(2*self.const)
+        if self.rect.y>hight+200:
+            self.kill()
+            
+class RadishCut2(pygame.sprite.Sprite):
+    def __init__(self,x,y,velocity):
+        pygame.sprite.Sprite.__init__(self)
+        self.image=pygame.image.load(os.path.join(fruit_folder,"radishcut2.png")).convert_alpha()
+        self.rect=self.image.get_rect()
+        self.rect.x=x-150
+        self.rect.y=y
+        self.const=velocity
+    def update(self):
+        self.const+=0.4
+        self.rect.y+=int(2*self.const)
+        if self.rect.y>hight+200:
+            self.kill()
+
+while carryOn:
+    for event in pygame.event.get():
+        # ----- Verifica consequências
+        if event.type == pygame.QUIT:
+            carryOn = False
+        if event.type == pygame.KEYUP:
+            state = GAME
+            running = False
+    if musica_i:
+        pygame.mixer.Sound.play(end_sound)
+        musica_i=False
+    background = pygame.image.load(os.path.join(background_folder,"startscreen.jpg")).convert()
+    screen.fill([0,0,0])
+    screen.blit(background, [0,0])
+    if state == "menu":
+        
+    pygame.display.flip()
 
 
 
